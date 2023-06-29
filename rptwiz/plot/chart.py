@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+import io
+import base64
 
 import matplotlib.pyplot as plt
 from typeguard import typechecked, Tuple, typeguard_ignore
@@ -44,3 +46,9 @@ class ChartBase(ABC):
 
     # def expose_plt(self) -> typechecked(plt):
     #     return self.plt
+
+    def to_base64(self) -> bytes:
+        pic = io.BytesIO()
+        self.plt.savefig(pic, format='png')
+        pic.seek(0)
+        return base64.b64encode(pic.read())
