@@ -1,0 +1,1 @@
+"""O pacote `rptwiz.table` fornece uma forma de preparar dados para o uso nos relatórios para compor tabelas."""

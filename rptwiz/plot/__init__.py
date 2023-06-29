@@ -1,0 +1,1 @@
+"""O pacote `rptwiz.plot` fornece uma forma de criação de gráficos padronizados."""
