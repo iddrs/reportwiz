@@ -89,3 +89,9 @@ tpl = jenv.get_template('example.html')
 html = rpt.to_html(tpl, subtitulo='Teste', autor='Everton')
 with open('test.html', 'w') as f:
     f.write(html)
+opt = {
+    'page-size': 'A4',
+    'title': 'Relatório de teste',
+    'orientation': 'Portrait'
+}
+rpt.to_pdf(html, 'test.pdf', options=opt)
