@@ -1,5 +1,5 @@
 <table>
-    {% if caption is defined %}
+    {% if caption is not none %}
         <caption>{{ caption }}</caption>
     {% endif %}
 
@@ -12,9 +12,9 @@
     <thead>
 
     <tbody>
-        {% for row in data %}
+        {% for index, row in data.iterrows() %}
             <tr>
-            {% for column in columns %}
+            {% for column in data.columns %}
                 <td>{{ row[column] }}</td>
             {% endfor %}
             </tr>

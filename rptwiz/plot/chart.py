@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from typing import Tuple
 from rptwiz.plot.theme import default
 from rptwiz import VisualizationBase
+from jinja2 import Template
 
 
 class ChartBase(VisualizationBase):
@@ -14,6 +15,7 @@ class ChartBase(VisualizationBase):
     theme: dict = default
     formatter_x = lambda x: str(x)
     formatter_y = lambda y: str(y)
+    is_builded = False
 
     def __init__(self, title: str = '', subtitle: str = '', figsize: Tuple[int, int] = (16, 9), theme = None):
         self.title = title
@@ -37,19 +39,28 @@ class ChartBase(VisualizationBase):
             self.plt.suptitle(self.title, **self.theme.title)
         if self.subtitle != '':
             self.plt.title(self.subtitle, **self.theme.subtitle)
+        self.is_builded = True
 
     def show(self):
+        if not self.is_builded:
+            self.build()
         self.plt.show()
 
     def savefig(self, filepath: str, **kwargs):
+        if not self.is_builded:
+            self.build()
         self.plt.savefig(filepath, **kwargs)
 
 
     def to_base64(self) -> bytes:
+        if not self.is_builded:
+            self.build()
         pic = io.BytesIO()
         self.plt.savefig(pic, format='png')
         pic.seek(0)
         return base64.b64encode(pic.read()).decode()
 
-    def to_html(self, template) -> str:
+    def to_html(self, template: Template) -> str:
+        if not self.is_builded:
+            self.build()
         return template.render(b64str=self.to_base64())

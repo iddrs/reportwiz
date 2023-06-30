@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ env.title }}</title>
+</head>
+<body>
+<h1>{{ env.title }}</h1>
+<h2>{{ env.data_base }}</h2>
+<h3>{{ subtitulo }}</h3>
+<h3>{{ autor }}</h3>
+
+{% for id, obj in viz.items() %}
+    <div>
+        <h4>{{ id }}</h4>
+        <div>
+            {{ obj }}
+        </div>
+    </div>
+{% endfor %}
+</body>
+</html>
