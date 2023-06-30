@@ -32,7 +32,7 @@ class ChartBase(ABC):
         return self
 
     def build(self):
-        self.fig, self.ax = plt.subplots(figsize=self.figsize, tight_layout=True, facecolor=self.theme.colors['face'])
+        self.fig, self.ax = plt.subplots(figsize=self.figsize, tight_layout=True, facecolor=self.theme.colors.face)
         if self.title != '':
             self.plt.suptitle(self.title, **self.theme.title)
         if self.subtitle != '':
@@ -43,9 +43,6 @@ class ChartBase(ABC):
 
     def savefig(self, filepath: str, **kwargs):
         self.plt.savefig(filepath, **kwargs)
-
-    # def expose_plt(self) -> typechecked(plt):
-    #     return self.plt
 
     def to_base64(self) -> bytes:
         pic = io.BytesIO()
