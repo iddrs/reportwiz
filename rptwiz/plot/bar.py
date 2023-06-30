@@ -1,9 +1,9 @@
 from rptwiz.plot.chart import ChartBase
 from pandas import Series
-from typeguard import typechecked, Tuple
+from typing import Tuple
 
 
-@typechecked
+
 class HorizontalBarChart(ChartBase):
     invert = False
 

@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from typeguard import typechecked, Union, Optional
+from typing import Union, Optional
 import pandas as pd
+from rptwiz import VisualizationBase
 
-@typechecked
-class TableBase(ABC):
+class Table(VisualizationBase):
 
     totals: dict = dict()
     def __init__(self, df: pd.DataFrame, caption: Optional[str] = None, labels: Optional[dict] = None, formatters: Optional[dict] = None):

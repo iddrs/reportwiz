@@ -1,10 +1,9 @@
 from rptwiz.plot.chart import ChartBase
 from pandas import Series
-from typeguard import typechecked, Tuple
+from typing import Tuple
 from matplotlib.ticker import FuncFormatter
 import random
 
-@typechecked
 class LineChart(ChartBase):
     invert = False
 
@@ -23,5 +22,5 @@ class LineChart(ChartBase):
         self.ax.set_xticks(x)
         self.ax.set_ylim(bottom=0)
         self.plt.legend(loc='best', ncol=len(yspec))
-        self.plt.grid(self.theme.line_grid)
+        # self.plt.grid(self.theme.line_grid)
         return self

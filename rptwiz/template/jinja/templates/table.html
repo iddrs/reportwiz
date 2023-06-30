@@ -1,9 +1,8 @@
-pure = '''
 <table>
     {% if caption is defined %}
         <caption>{{ caption }}</caption>
     {% endif %}
-    
+
     <thead>
         <tr>
         {% for label in labels %}
@@ -11,7 +10,7 @@ pure = '''
         {% endfor %}
         </tr>
     <thead>
-    
+
     <tbody>
         {% for row in data %}
             <tr>
@@ -22,4 +21,3 @@ pure = '''
         {% endfor %}
     <tbody>
 </table>
-'''

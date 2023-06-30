@@ -18,11 +18,3 @@ barh_labels = dict(
     horizontalalignment='left',
     verticalalignment='center',
     color=colors.black)
-
-line_grid = dict(
-    visible=True,
-    which='major',
-    axis='both',
-    color=colors.grey,
-    alpha=0.5
-)

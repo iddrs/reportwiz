@@ -3,12 +3,12 @@ import io
 import base64
 
 import matplotlib.pyplot as plt
-from typeguard import typechecked, Tuple, typeguard_ignore
+from typing import Tuple
 from rptwiz.plot.theme import default
+from rptwiz import VisualizationBase
 
 
-@typechecked
-class ChartBase(ABC):
+class ChartBase(VisualizationBase):
 
     plt: plt = None
     theme: dict = default
@@ -44,8 +44,12 @@ class ChartBase(ABC):
     def savefig(self, filepath: str, **kwargs):
         self.plt.savefig(filepath, **kwargs)
 
+
     def to_base64(self) -> bytes:
         pic = io.BytesIO()
         self.plt.savefig(pic, format='png')
         pic.seek(0)
-        return base64.b64encode(pic.read())
+        return base64.b64encode(pic.read()).decode()
+
+    def to_html(self, template) -> str:
+        return template.render(b64str=self.to_base64())

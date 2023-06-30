@@ -2,10 +2,7 @@ from abc import ABC, abstractmethod
 
 import pandas as pd
 from sqlalchemy import create_engine
-from typeguard import typechecked
 
-
-@typechecked
 class ProviderBase(ABC):
     """Classe base abstrata para provedores de dados."""
     @abstractmethod
@@ -14,7 +11,6 @@ class ProviderBase(ABC):
         pass
 
 
-@typechecked
 class FileProvider(ProviderBase):
     """Classe para provedor de arquivos."""
 
@@ -26,7 +22,6 @@ class FileProvider(ProviderBase):
         self.filepath = filepath
 
 
-@typechecked
 class SQLProvider(ProviderBase):
     """Classe para provedor de SQL."""
 
@@ -49,7 +44,6 @@ class SQLProvider(ProviderBase):
         return pd.read_sql(sql, self.con, **kwargs)
 
 
-@typechecked
 class ExcelProvider(FileProvider):
     """Classe para provedor de arquivos Excel."""
 
@@ -70,7 +64,7 @@ class ExcelProvider(FileProvider):
         return pd.read_excel(self.filepath, **kwargs)
 
 
-@typechecked
+
 class CSVProvider(FileProvider):
     """Classe para provedor de arquivos CSV."""
 
@@ -91,7 +85,7 @@ class CSVProvider(FileProvider):
         return pd.read_csv(self.filepath, **kwargs)
 
 
-@typechecked
+
 class ParquetProvider(FileProvider):
     """Classe para provedor de arquivos Parquet."""
 
