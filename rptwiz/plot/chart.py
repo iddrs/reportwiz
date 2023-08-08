@@ -17,7 +17,7 @@ class ChartBase(VisualizationBase):
     formatter_y = lambda y: str(y)
     is_builded = False
 
-    def __init__(self, title: str = '', subtitle: str = '', figsize: Tuple[int, int] = (16, 9), theme = None):
+    def __init__(self, title: str = '', subtitle: str = '', figsize: Tuple[int, int] = (8, 5), theme = None):
         self.title = title
         self.subtitle = subtitle
         self.plt = plt
